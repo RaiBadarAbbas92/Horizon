@@ -10,9 +10,11 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { useRouter } from 'next/navigation'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +52,7 @@ export function Navbar() {
               width={40} 
               height={30} 
               className="w-20 h-20 object-contain drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]" 
+              priority
             />
           </Link>
 
@@ -72,13 +75,13 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Button 
               className="hidden sm:inline-flex items-center text-sm bg-gradient-to-r from-orange-500 to-blue-600 text-white hover:from-blue-600 hover:to-orange-500 px-6 py-5 rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-blue-600/30 transition-all duration-300 transform hover:scale-105 font-semibold" 
-              onClick={() => window.location.href = '/Signup'}
+              onClick={() => router.push('/Signup')}
             >
               Sign Up <ChevronRight className="ml-2 w-4 h-4" />
             </Button>
             <Button 
               className="hidden sm:flex text-sm bg-white/5 backdrop-blur-lg text-white hover:bg-white/10 px-6 py-5 rounded-xl border border-white/10 hover:border-orange-500/50 transition-all duration-300 transform hover:scale-105 font-semibold" 
-              onClick={() => window.location.href = '/sigin'}
+              onClick={() => router.push('/sigin')}
             >
               Login
             </Button>
@@ -108,13 +111,13 @@ export function Navbar() {
                   <div className="pt-8 px-6 space-y-4">
                     <Button 
                       className="bg-gradient-to-r from-orange-500 to-blue-600 hover:from-blue-600 hover:to-orange-500 text-white w-full rounded-xl py-6 text-base font-semibold shadow-lg shadow-orange-500/20 hover:shadow-blue-600/30 transition-all duration-300" 
-                      onClick={() => window.location.href = '/Signup'}
+                      onClick={() => router.push('/Signup')}
                     >
                       Sign Up <ChevronRight className="ml-2 w-4 h-4" />
                     </Button>
                     <Button 
                       className="bg-white/5 backdrop-blur-lg text-white hover:bg-white/10 w-full rounded-xl py-6 text-base font-semibold border border-white/10 hover:border-orange-500/50 transition-all duration-300" 
-                      onClick={() => window.location.href = '/sigin'}
+                      onClick={() => router.push('/sigin')}
                     >
                       Login
                     </Button>

@@ -24,6 +24,23 @@ export default function Hero() {
 
   const [currentTraderIndex, setCurrentTraderIndex] = useState(0)
   const [currentWeeklyTraderIndex, setCurrentWeeklyTraderIndex] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [windowHeight, setWindowHeight] = useState(0)
+
+  useEffect(() => {
+    // Set initial window dimensions
+    setWindowWidth(window.innerWidth)
+    setWindowHeight(window.innerHeight)
+
+    // Update dimensions on resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      setWindowHeight(window.innerHeight)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,7 +66,7 @@ export default function Hero() {
               className="absolute h-16 w-1 bg-green-400"
               initial={{ 
                 x: Math.random() * 100 + i * 50,
-                y: Math.random() * window.innerHeight,
+                y: Math.random() * (windowHeight || 0),
                 height: Math.random() * 40 + 20
               }}
               animate={{
@@ -74,8 +91,8 @@ export default function Hero() {
             key={index}
             className="absolute"
             initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (windowWidth || 0),
+              y: Math.random() * (windowHeight || 0),
               scale: Math.random() * 0.5 + 0.5
             }}
             animate={{
