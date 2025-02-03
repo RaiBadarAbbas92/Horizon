@@ -161,7 +161,7 @@ export default function Signup() {
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+      const response = await fetch(`https://again-dseradaedqfbd0ca.canadacentral-01.azurewebsites.net/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
