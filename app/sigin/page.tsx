@@ -113,7 +113,7 @@ export default function Login() {
       formData.append("username", loginData.email);
       formData.append("password", loginData.password);
 
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login" || "http://127.0.0.1:8000/auth/login", {
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login" || "https://again-dseradaedqfbd0ca.canadacentral-01.azurewebsites.net/auth/login", {
         method: "POST",
         body: formData,
       });
